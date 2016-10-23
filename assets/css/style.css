@@ -1,0 +1,20 @@
+body {
+}
+h1 {
+}
+h2 {
+}
+section {
+}
+footer {
+}
+button {
+    cursor: pointer;
+    z-index: 15;
+    font-size: 24px;
+}
+
+/* responsive styles! */
+@media screen and (max-width: 1015px) {
+    
+}
