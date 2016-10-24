@@ -1,6 +1,14 @@
 # TriviaGame
 A javascript trivia game using timers
 
+TO DO:
+	- refine layout
+	- add fonts
+	- add images
+	- add colors
+	- add sounds
+	- add more questions
+
 INSTRUCTIONS:
 
 watch the demo:
