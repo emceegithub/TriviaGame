@@ -2,9 +2,8 @@
 A javascript trivia game using timers
 
 TO DO:
-	- refine layout
 	- add fonts
-	- add images
+	- add question images
 	- add colors
 	- add sounds
 	- add more questions
