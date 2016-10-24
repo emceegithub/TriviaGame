@@ -81,17 +81,17 @@ function gameOver(){
 	if (score > .9){
 		praise = "Amazing! You achieved the rank of King of the Seven Kingdoms.";
 	} else if (score > .8){
-		praise = "Amazing! You achieved the rank of Shadowbinder.";
+		praise = "Amazing! You achieved the rank of Knight of the Kingsguard.";
 	} else if (score > .7){
-		praise = "Well done, you achieved the rank of Lord.";
+		praise = "Well done, you achieved the rank of Lord of Harrenhal.";
 	} else if (score > .6){
 		praise = "Well done, you achieved the rank of Maester.";
 	} else if (score > .5){
-		praise = "Well done, you achieved the rank of Squire.";
+		praise = "Well done, you achieved the rank of Knight's Squire.";
 	} else if (score > .4){
-		praise = "Not bad, you achieved the rank of Novice.";
+		praise = "Not bad, you achieved the rank of Novice of the Citadel.";
 	}
-	$("#result").html("Game Over. You got " + numRight + " questions right out of " + gameLength + ". " + praise + "<button id='newGame'>New Game</button>");
+	$("#result").html("Game Over. You got " + numRight + " questions right and " + numWrong + " wrong. " + praise + "<button id='newGame'>New Game</button>");
 	$("#newGame").on("click", initGame);
 }
 $(document).ready(initGame);
