@@ -2,7 +2,6 @@
 A javascript trivia game using timers
 
 TO DO:
-    - add question images to page BG
 	- add more questions (optional)
 
 INSTRUCTIONS:
