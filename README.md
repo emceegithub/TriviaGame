@@ -2,11 +2,8 @@
 A javascript trivia game using timers
 
 TO DO:
-	- add fonts
-	- add question images
-	- add colors
-	- add sounds
-	- add more questions
+    - add question images to page BG
+	- add more questions (optional)
 
 INSTRUCTIONS:
 
