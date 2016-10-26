@@ -1,8 +1,14 @@
 # TriviaGame
-A javascript trivia game using timers
+A Game of Thrones (of course) javascript trivia game using timers
+
+Added features:
+    - separated questions into a library, so more can be added easily
+    - randomized question order
+    - added images to go with each question
+    - responsive styles
 
 TO DO:
-	- add more questions (optional)
+	- add more questions (if I have time)
 
 INSTRUCTIONS:
 
