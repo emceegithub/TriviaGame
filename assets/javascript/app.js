@@ -5,15 +5,17 @@ var currentQuestion;
 var timer;
 var timeToGuess;
 var timeTilNextQ;
+var library; // a copy of the questions for this game
 // settings
 var questionLength = 10; // seconds you have to guess
-var answerLength = 3; // seconds you're shown the answer
-var gameLength = 10; // number of questions per round
+var answerLength = .5; // seconds you're shown the answer
+var gameLength; // set this to limit the number of questions per game
 
 function initGame(){
 	// display intro
 	$("#qText").html('When you play Trivia of Thrones, you win or you die. Okay, so you won\'t actually die, but some of these questions are very difficult, and you only have 10 seconds to answer, not enough time to google it! Good luck, and <em>Valar Morghulis</em>.<button id="startGame">Begin Game</button>');
 	$("#result").hide();
+	$("#choices").hide();
 	$("#choices li").empty();
 	$(".scoreBoard").empty();
 	//add listeners
@@ -22,16 +24,21 @@ function initGame(){
 	//reset game variables
 	numWrong = 0;
 	numRight = 0;
+	// creates a fresh clone of the library on each play
+	library = questLib.slice(); 
 	timeToGuess = questionLength;
+	gameLength = library.length;
 }
 function newQuestion(){
-	if(numRight+numWrong === gameLength){
+	console.log("newQuestion"+gameLength+", "+numRight+"+"+numWrong);
+	if(numRight+numWrong >= gameLength){
 		gameOver();
 	} else {
 		//pick a random question that hasn't been asked already
-		var qNum = Math.floor(Math.random() * questLib.length);
-		currentQuestion = questLib[qNum];
-		questLib.splice(qNum, 1);
+		var qNum = Math.floor(Math.random() * library.length);
+		currentQuestion = library[qNum];
+		library.splice(qNum, 1);
+		resetTimer();
 		$("#result").empty().hide();
 		$("#qText").html(currentQuestion.question);
 		$("#choices").show().find(".answer").each(function(i){
@@ -92,7 +99,7 @@ function gameOver(){
 	} else if (score > .4){
 		praise = "Not bad, you achieved the rank of Novice of the Citadel.";
 	}
-	$("#result").removeClass().html("<h1>Game Over</h1><div class='gameOverText'>You got " + numRight + " questions right and " + numWrong + " wrong. " + praise + "</div><button id='newGame'>New Game</button>");
+	$("#result").removeClass().html("<h1>Game Over</h1><div class='gameOverText'>You got " + numRight + " questions right and " + numWrong + " wrong. " + praise + "</div><button id='newGame'>Play Again</button>");
 	$("#newGame").on("click", initGame);
 }
 $(document).ready(initGame);

@@ -110,7 +110,7 @@ var questLib = [
 	{
 	 	question: "How long before the start of the books did the last dragons die?",
 	 	answers: ["3 years", "39 years", "150 years", "300 years"],
-	 	correctAnswer: 3,
+	 	correctAnswer: 2,
 	 	image: "assets/images/questionImages/018.jpg"
 	},
 	{
