@@ -8,7 +8,7 @@ Added features:
     - responsive styles
 
 TO DO:
-	- add more questions (if I have time)
+	- make the images come from google images api instead of having to find them all?
 
 INSTRUCTIONS:
 
