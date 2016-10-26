@@ -8,7 +8,7 @@ var timeTilNextQ;
 var library; // a copy of the questions for this game
 // settings
 var questionLength = 10; // seconds you have to guess
-var answerLength = .5; // seconds you're shown the answer
+var answerLength = 3; // seconds you're shown the answer
 var gameLength; // set this to limit the number of questions per game
 
 function initGame(){
@@ -19,8 +19,8 @@ function initGame(){
 	$("#choices li").empty();
 	$(".scoreBoard").empty();
 	//add listeners
-	$("#choices .answer").on("click", makeGuess);
-	$("#startGame").on("click", newQuestion);
+	$("#choices .answer").off().on("click", makeGuess);
+	$("#startGame").off().on("click", newQuestion);
 	//reset game variables
 	numWrong = 0;
 	numRight = 0;
@@ -30,7 +30,6 @@ function initGame(){
 	gameLength = library.length;
 }
 function newQuestion(){
-	console.log("newQuestion"+gameLength+", "+numRight+"+"+numWrong);
 	if(numRight+numWrong >= gameLength){
 		gameOver();
 	} else {
@@ -84,6 +83,7 @@ function resetTimer(){
 	$("#timer").empty();
 }
 function gameOver(){
+	$("body").css("background-image", 'url("assets/images/init-BG.jpg")');
 	var score = (numRight/gameLength);
 	var praise = "That was pretty shabby. You get sent to the Wall.";
 	if (score > .9){
