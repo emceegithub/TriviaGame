@@ -17,8 +17,6 @@ h1 {
     color: #fff;
     text-shadow: black -2px 3px 1px;
 }
-h2 {
-}
 section {
 	color: antiquewhite;
 	padding: 4%;
@@ -84,7 +82,7 @@ button#newGame {
     right: 30px;
     top: 10px;
 }
-.scoreBoard {
+.scoreboard {
     float: left;
     margin: 2%;
     background-color: #c5bbac;
@@ -116,8 +114,6 @@ button {
     border-radius: 7px;
     color: white;
 }
-footer {
-}
 /* responsive styles! */
 @media screen and (max-width: 750px) {
     #timer {
@@ -134,7 +130,7 @@ footer {
     #score {
         clear: both;
     }
-    .scoreBoard {
+    .scoreboard {
         width: 35%;
     }
 }

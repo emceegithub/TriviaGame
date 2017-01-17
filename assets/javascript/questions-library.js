@@ -1,4 +1,4 @@
-var questLib = [
+var questionsLibrary = [
 	{
 	 	question: "What was Tyrion's mother's name?",
 	 	answers: ["Joanna", "Tysha", "Shiera", "No one knows."],

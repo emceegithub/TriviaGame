@@ -1,10 +1,9 @@
 //global variables
-var numRight;
-var numWrong;
+var numberRight;
+var numberWrong;
 var currentQuestion;
 var timer;
 var timeToGuess;
-var timeTilNextQ;
 var library; // a copy of the questions for this game
 // settings
 var questionLength = 10; // seconds you have to guess
@@ -17,26 +16,26 @@ function initGame(){
 	$("#result").hide();
 	$("#choices").hide();
 	$("#choices li").empty();
-	$(".scoreBoard").empty();
+	$(".scoreboard").empty();
 	//add listeners
 	$("#choices .answer").off().on("click", makeGuess);
 	$("#startGame").off().on("click", newQuestion);
 	//reset game variables
-	numWrong = 0;
-	numRight = 0;
+	numberWrong = 0;
+	numberRight = 0;
 	// creates a fresh clone of the library on each play
-	library = questLib.slice(); 
+	library = questionsLibrary.slice(); 
 	timeToGuess = questionLength;
 	gameLength = library.length;
 }
 function newQuestion(){
-	if(numRight+numWrong >= gameLength){
+	if(numberRight + numberWrong >= gameLength){
 		gameOver();
 	} else {
 		//pick a random question that hasn't been asked already
-		var qNum = Math.floor(Math.random() * library.length);
-		currentQuestion = library[qNum];
-		library.splice(qNum, 1);
+		var questionNumber = Math.floor(Math.random() * library.length);
+		currentQuestion = library[questionNumber];
+		library.splice(questionNumber, 1);
 		resetTimer();
 		$("#result").empty().hide();
 		$("#qText").html(currentQuestion.question);
@@ -50,18 +49,22 @@ function newQuestion(){
 }
 function makeGuess(){
 	if ($(this).data("choice") == currentQuestion.correctAnswer){
-		numRight++;
+		numberRight++;
 		showResult("Correct!", "correctResult");
 	} else {
-		numWrong++;
+		numberWrong++;
 		showResult("Wrong. The correct answer was " + currentQuestion.answers[currentQuestion.correctAnswer], "wrongResult");
 	}
 }
 function showResult(msg, addThisClass){
 	resetTimer();
-	$("#result").html(msg).show().removeClass().addClass(addThisClass);
+	$("#result")
+		.html(msg)
+		.show()
+		.removeClass()
+		.addClass(addThisClass);
 	setTimeout(newQuestion, answerLength*1000);
-	$("#score").html("correct: " + numRight + " <br> incorrect: " + numWrong);
+	$("#score").html("correct: " + numberRight + " <br> incorrect: " + numberWrong);
 
 }
 function showTimer(){
@@ -73,7 +76,7 @@ function showTimer(){
 	}
 }
 function timesUp(){
-	numWrong++;
+	numberWrong++;
 	resetTimer();
 	showResult("Time's Up! The correct answer was " + currentQuestion.answers[currentQuestion.correctAnswer], "timesUp");
 }
@@ -84,7 +87,7 @@ function resetTimer(){
 }
 function gameOver(){
 	$("body").css("background-image", 'url("assets/images/init-BG.jpg")');
-	var score = (numRight/gameLength);
+	var score = (numberRight/gameLength);
 	var praise = "That was pretty shabby. You get sent to the Wall.";
 	if (score > .9){
 		praise = "Amazing! You achieved the rank of King of the Seven Kingdoms.";
@@ -99,7 +102,7 @@ function gameOver(){
 	} else if (score > .4){
 		praise = "Not bad, you achieved the rank of Novice of the Citadel.";
 	}
-	$("#result").removeClass().html("<h1>Game Over</h1><div class='gameOverText'>You got " + numRight + " questions right and " + numWrong + " wrong. " + praise + "</div><button id='newGame'>Play Again</button>");
+	$("#result").removeClass().html("<h1>Game Over</h1><div class='gameOverText'>You got " + numberRight + " questions right and " + numberWrong + " wrong. " + praise + "</div><button id='newGame'>Play Again</button>");
 	$("#newGame").on("click", initGame);
 }
 $(document).ready(initGame);
